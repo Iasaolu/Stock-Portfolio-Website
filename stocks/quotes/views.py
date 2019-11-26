@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Stock
 from .forms import StockForm
 from django.contrib import messages
-
+#Type in public key
+public_key = 
 # Create your views here.
 def home(request):
 	import requests
@@ -10,7 +11,7 @@ def home(request):
 
 	if request.method == 'POST':
 		ticker = request.POST['ticker']
-		api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ticker+"/quote?token=pk_78e5c006aeef4f3ea34f21ae5ae4ce67")
+		api_request = requests.get("https://cloud.iexapis.com/stable/stock/"+ticker+"/quote?token="+public_key)
 
 		try:
 			api = json.loads(api_request.content)
